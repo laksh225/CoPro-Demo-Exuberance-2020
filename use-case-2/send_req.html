@@ -2,31 +2,33 @@
 <html>
 	<head>
 		<title>Send Requests to Api</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
 	</head>
 	<body>
 	<br>
 	<br>
+	<iframe width="802" height="451" src="https://www.youtube.com/embed/SMKPKGW083c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	<div>
 	<h4 id="firstdiv">Question is yet to be submitted</h4>
 	</div>
 		<form>
 			<label>Enter your question:</label>
-			<input type="text"><br>
-			<button type="button" onclick="send_request()">Submit</button>
+			<input type="text" class="chat"><br>
+			<button type="button">Submit</button>
 		<form>
 
-<script> function send_request(){
-console.log("hello")
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-	if (this.status == 200) {
-	console.log("hello2")
-	 document.getElementById("firstdiv").innerHTML = "<h4>Question is Submitted</h4>"
-	}
-	};
-	xhttp.open("GET", "hello.txt", true);
-	xhttp.send();
-}
+<script> $(document).ready(function(){
+	$("button").click(function(){
+	$.post("hello.asp", 
+	{
+	   msg: $(".chat").text() + Math.floor((Math.random() * 100) + 1)
+	}, 
+	function(data, status){
+	alert("Data: " + data + "\nStatus: "+ status)
+	});
+	
+    });
+});
 </script>
 	</body>
 
