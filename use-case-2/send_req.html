@@ -11,21 +11,29 @@
 	<div>
 	<h4 id="firstdiv">Question is yet to be submitted</h4>
 	</div>
+	<br>
+	<br>
+	<div id="chat">
+	</div>
+	
+	
 		<form>
 			<label>Enter your question:</label>
-			<input type="text" class="chat"><br>
+			<input type="text" id="question"><br>
 			<button type="button">Submit</button>
 		<form>
 
 <script> $(document).ready(function(){
 	$("button").click(function(){
+	//alert($("#chat").val() + "<h6>" + $("#question").val() + "</h6>")
 	$.post("hello.asp", 
 	{
-	   msg: $(".chat").text() + Math.floor((Math.random() * 100) + 1)
+	   msg: $("#question").text() + Math.floor((Math.random() * 100) + 1)
 	}, 
 	function(data, status){
 	alert("Data: " + data + "\nStatus: "+ status)
 	});
+	$("#chat").html($("#chat").html() + "<h6>" + $("#question").val() + "</h6>")
 	
     });
 });
