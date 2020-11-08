@@ -26,6 +26,7 @@
 <script> $(document).ready(function(){
 	$("button").click(function(){
 	//alert($("#chat").val() + "<h6>" + $("#question").val() + "</h6>")
+	//console.log("hello")
 	$.post("hello.asp", 
 	{
 	   msg: $("#question").text() + Math.floor((Math.random() * 100) + 1)
@@ -38,11 +39,8 @@
     });
 });
 </script>
+
 	</body>
-
-
-
-
 
 </html>
 
